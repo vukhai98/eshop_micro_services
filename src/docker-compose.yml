@@ -1,0 +1,30 @@
+version: '3.8'
+
+services:
+  # --------Database section -----
+  # Order DB :
+  orderdb:
+    image: mcr.microsoft.com/mssql/server:2019-latest
+  
+  #Prouduct DB: 
+  productdb:
+        image: mysql:8.0
+
+  # Basketdb: redis
+  basketdb:
+     image: redis:alpine
+
+# Network section
+networks:
+    default:
+        name: tedu_microservices
+        driver: bridge
+
+# Volumes section
+volumes:
+    sqlserver_data:
+        name: sqlserver_data
+
+    mysql_data:
+        name: sqlserver_data
+
