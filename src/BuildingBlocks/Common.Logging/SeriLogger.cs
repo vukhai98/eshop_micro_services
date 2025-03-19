@@ -10,6 +10,8 @@ namespace Common.Logging
             var applicationName = context.HostingEnvironment.ApplicationName?.ToLower().Replace(".", "-");
             var environmentName = context.HostingEnvironment.EnvironmentName ?? "Development";
 
+            Console.WriteLine("SeriLogger is being configured..."); // Kiểm tra xem hàm này có chạy không
+
             configuration
                 .WriteTo.Debug()
                 .WriteTo.Console(outputTemplate:

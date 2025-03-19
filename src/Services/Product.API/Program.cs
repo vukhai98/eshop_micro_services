@@ -1,13 +1,11 @@
-using Common.Logging;
+﻿using Common.Logging;
 using Serilog;
 using Shared.Constants;
 
 var builder = WebApplication.CreateBuilder(args);
 
-Log.Information("{Message}", Constants.StartProject, "Product");
-
 builder.Host.UseSerilog(SeriLogger.Configure);
-
+Log.Information("{Message}", Constants.StartProject, "Product");
 
 try
 {
@@ -37,10 +35,10 @@ try
 }
 catch (Exception ex)
 {
-    Log.Fatal(ex, "Unhandled exception");
+    Log.Fatal(ex, Constants.UnhandledException);
 }
 finally
 {
-    Log.Information("Shut dowb Product API conplete");
-    Log.CloseAndFlush();
+    Log.Information("{Message}", Constants.ShutdownProject, "Product");
+    await Log.CloseAndFlushAsync();
 }
